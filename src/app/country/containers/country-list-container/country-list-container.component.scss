@@ -1,0 +1,38 @@
+.list-container {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 80px 1fr;
+  grid-template-areas:
+  "text-input dropdown"
+  "country-list country-list";
+  padding-top: 30px;
+}
+
+app-drop-down {
+  justify-self: end;
+  grid-area: dropdown;
+}
+
+app-country-list {
+  grid-area: country-list;
+}
+
+app-text-input {
+  grid-area: text-input;
+}
+
+@media all and (max-width: 575px) {
+  .list-container {
+    grid-template-areas:
+      "text-input"
+      "dropdown"
+      "country-list";
+    grid-template-rows: 60px 60px 1fr;
+    grid-template-columns: 1fr;
+ }
+
+ app-drop-down {
+  justify-self: start;
+ }
+}

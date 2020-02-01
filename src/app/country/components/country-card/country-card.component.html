@@ -1,0 +1,11 @@
+<div class="shape container">
+  <div class="image-container">
+    <img *ngIf="country.flag" [src]="country.flag"/>
+  </div>
+  <div class="detail-container">
+    <h4>{{country.name}}</h4>
+    <app-field label="Population" [value]="country.population | number:'2.'"></app-field>
+    <app-field label="Region" [value]="country.region"></app-field>
+    <app-field label="Capital" [value]="country.capital"></app-field>
+  </div>
+</div>

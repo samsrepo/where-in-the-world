@@ -1,0 +1,31 @@
+.container {
+  display: grid;
+  grid-template-areas:
+  "back-button"
+  "country-detail";
+  grid-gap: 2vw;
+  grid-template-rows: 150px 1fr;
+}
+
+.back-button {
+  grid-area: back-button;
+  width: 140px;
+  border: none;
+  height: 40px;
+  align-self: center;
+}
+
+app-country-detail {
+  grid-area: country-detail;
+}
+
+.icon {
+  margin-right: 15px;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .container {
+    grid-template-rows: 100px 1fr;
+  }
+}

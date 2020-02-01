@@ -1,0 +1,20 @@
+<div class="container">
+  <img *ngIf="country && country.flag" [src]="country.flag"/>
+  <h2>{{country?.name}}</h2>
+  <div class="left-fields">
+    <app-field label="Native Name" [value]="country?.nativeName"></app-field>
+    <app-field label="Population" [value]="country?.population | number:'2.'"></app-field>
+    <app-field label="Region" [value]="country?.region"></app-field>
+    <app-field label="Sub Region" [value]="country?.subregion"></app-field>
+    <app-field label="Capital" [value]="country?.capital"></app-field>
+  </div>
+  <div class="right-fields">
+    <app-field label="Top Level Domain" [value]="country?.topLevelDomain"></app-field>
+    <app-field label="Currencies" [value]="country?.currency_names.join(', ')"></app-field>
+    <app-field label="Languages" [value]="country?.language_names.join(', ')"></app-field>
+  </div>
+  <div class="border-container">
+    <h4>Border countries:</h4>
+  <button *ngFor="let border of country?.borders_format" class="shape" [routerLink]="['/countries/', border?.code]">{{border?.name}}</button>
+  </div>
+</div>

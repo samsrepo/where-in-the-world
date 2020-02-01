@@ -1,0 +1,3 @@
+<div class="container">
+  <app-country-card (click)="countrySelected.emit(country.alpha3Code)" *ngFor="let country of countries" [country]="country"></app-country-card>
+</div>

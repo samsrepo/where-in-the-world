@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="form-control-container" (click)="toggleDrop()">
+    <p class="sm-text-bold">{{(value) ? value : selectText | titlecase}}</p>
+    <i class="fa fa-chevron-down icon"></i>
+  </div>
+  <div *ngIf="dropOpen" class="dropdown-content">
+    <div class="list-container">
+      <ul>
+        <li class="sm-text-bold" *ngFor="let item of values" (click)="itemSelected(item)">{{item}}</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
