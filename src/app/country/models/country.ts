@@ -1,3 +1,7 @@
+
+/**
+ * Interface for our main country object
+ */
 export interface Country {
   name: string;
   topLevelDomain: string[];

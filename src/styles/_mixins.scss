@@ -1,5 +1,6 @@
 @import 'variables';
 
+//Mixins to standardise device width breakpoints
 @mixin on-mobile {
   @media (max-width: #{$mobile-width}) {
     @content;
@@ -24,6 +25,7 @@
   }
 }
 
+//Default styles for most elements
 @mixin element-defaults() {
   border-radius: $border-radius;
   background-color: var(--el-color);

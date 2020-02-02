@@ -9,14 +9,23 @@ import { CountryListComponent } from './components/country-list/country-list.com
 import { SharedModule } from '../shared/shared.module';
 import { CountryCardComponent } from './components/country-card/country-card.component';
 import { FieldComponent } from './components/field/field.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 
 @NgModule({
-  declarations: [CountryListContainerComponent, CountryDetailContainerComponent, CountryDetailComponent, CountryListComponent, CountryCardComponent, FieldComponent],
+  declarations: [
+    CountryListContainerComponent,
+    CountryDetailContainerComponent,
+    CountryDetailComponent,
+    CountryListComponent,
+    CountryCardComponent,
+    FieldComponent
+  ],
   imports: [
     CommonModule,
     CountryRoutingModule,
-    SharedModule
+    SharedModule,
+    InfiniteScrollModule
   ]
 })
 export class CountryModule { }

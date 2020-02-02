@@ -3,6 +3,10 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { map, catchError } from 'rxjs/operators';
 import { throwError, Observable } from 'rxjs';
 
+
+/**
+ * Generic service to perform HTTP requests
+ */
 @Injectable({
   providedIn: 'root'
 })

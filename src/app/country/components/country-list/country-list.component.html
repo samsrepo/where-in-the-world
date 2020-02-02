@@ -1,4 +1,4 @@
-<div class="container">
+<div #list class="container">
   <app-country-card (click)="countrySelected.emit(country.alpha3Code)" *ngFor="let country of countries" [country]="country"></app-country-card>
   <h3 *ngIf="countries.length === 0">No Countries Found</h3>
 </div>

@@ -1,6 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Country } from '../../models/country';
 
+
+/**
+ * Presentation component to display country data
+ */
 @Component({
   selector: 'app-country-detail',
   templateUrl: './country-detail.component.html',
@@ -8,6 +12,9 @@ import { Country } from '../../models/country';
 })
 export class CountryDetailComponent implements OnInit {
 
+  /**
+   * Input for selected country
+   */
   @Input() country: Country;
 
   constructor() { }

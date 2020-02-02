@@ -5,6 +5,7 @@ import { DropDownComponent } from './form-controls/drop-down/drop-down.component
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TextInputComponent } from './form-controls/text-input/text-input.component';
 import { PaginatePipe } from './paginate.pipe';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { PaginatePipe } from './paginate.pipe';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    InfiniteScrollModule
   ]
 })
 export class SharedModule { }

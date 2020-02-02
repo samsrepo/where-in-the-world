@@ -1,6 +1,10 @@
 import { Component, OnInit, ChangeDetectionStrategy, forwardRef, Input } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
+
+/**
+ * Custom text input component
+ */
 @Component({
   selector: 'app-text-input',
   templateUrl: './text-input.component.html',
