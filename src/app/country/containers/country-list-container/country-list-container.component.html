@@ -1,5 +1,5 @@
 <div class="content-container list-container" [formGroup]="filterForm">
     <app-text-input formControlName="country" placeholder="Search for a country"></app-text-input>
-    <app-drop-down formControlName="region" [values]="regionDrop | async" selectText="Filter by Region"></app-drop-down>
-    <app-country-list (countrySelected)="loadCountry($event)" [countries]="countries | async"></app-country-list>
+    <app-drop-down (clearSelection)="clearRegion()" formControlName="region" [values]="regionDrop | async" selectText="Filter by Region"></app-drop-down>
+    <app-country-list (loadMore)="loadMoreCountries()" (countrySelected)="loadCountry($event)" [countries]="countries | async | paginate: listSize"></app-country-list>
 </div>

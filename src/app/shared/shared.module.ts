@@ -4,17 +4,20 @@ import { HttpClientModule } from '@angular/common/http';
 import { DropDownComponent } from './form-controls/drop-down/drop-down.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TextInputComponent } from './form-controls/text-input/text-input.component';
+import { PaginatePipe } from './paginate.pipe';
 
 @NgModule({
   declarations: [
     DropDownComponent,
-    TextInputComponent
+    TextInputComponent,
+    PaginatePipe
   ],
   exports: [
     DropDownComponent,
     TextInputComponent,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PaginatePipe
   ],
   imports: [
     CommonModule,

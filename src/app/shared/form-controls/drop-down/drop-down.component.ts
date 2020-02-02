@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input, forwardRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Input, forwardRef, HostListener, ElementRef, Output, EventEmitter } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 @Component({
@@ -21,7 +21,9 @@ export class DropDownComponent implements ControlValueAccessor {
 
   @Input() selectText = 'Select...';
 
-  constructor() { }
+  @Output() clearSelection = new EventEmitter();
+
+  constructor(private eRef: ElementRef) { }
 
   disabled = false;
 
@@ -37,10 +39,19 @@ export class DropDownComponent implements ControlValueAccessor {
     this.propagateChange = fn;
   }
 
+  clear(event) {
+    event.stopPropagation();
+    this.clearSelection.emit();
+  }
+
   registerOnTouched() {}
 
-  toggleDrop() {
-    this.dropOpen = !this.dropOpen;
+  dropClick() {
+    if (this.value) {
+      this.clearSelection.emit();
+    } else {
+      this.dropOpen = !this.dropOpen;
+    }
   }
 
   itemSelected(item) {
@@ -48,5 +59,13 @@ export class DropDownComponent implements ControlValueAccessor {
     this.value = item;
     this.propagateChange(this.value);
   }
+
+    // Hide about info if click outside about text
+    @HostListener('document:click', ['$event'])
+    clickout(event) {
+      if(!this.eRef.nativeElement.contains(event.target)) {
+        this.dropOpen = false;
+      }
+    }
 
 }

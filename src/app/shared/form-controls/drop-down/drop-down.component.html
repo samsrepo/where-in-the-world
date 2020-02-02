@@ -1,7 +1,8 @@
 <div class="container">
-  <div class="form-control-container" (click)="toggleDrop()">
+  <div class="form-control-container" (click)="dropClick()">
     <p class="sm-text-bold">{{(value) ? value : selectText | titlecase}}</p>
-    <i class="fa fa-chevron-down icon"></i>
+    <i *ngIf="!value" class="fa fa-chevron-{{dropOpen ? 'up': 'down'}} icon"></i>
+    <i *ngIf="value" class="fa fa-times icon"></i>
   </div>
   <div *ngIf="dropOpen" class="dropdown-content">
     <div class="list-container">

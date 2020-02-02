@@ -15,22 +15,32 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 })
 export class TextInputComponent implements ControlValueAccessor  {
 
-  @Input() placeholder;
+  @Input() placeholder: string;
 
-  value = '';
+  private controlValue: string;
 
   onChange = (_: any) => { };
   onTouched = () => { };
+
   constructor() { }
 
-  writeValue(value: any): void {
-    this.value = value || '';
-  }
+  registerOnChange(fn: (_: any) => {}): void { this.onChange = fn; }
+  registerOnTouched(fn: () => {}): void { this.onTouched = fn; }
 
+  writeValue(obj: any): void {
+    this.controlValue = obj;
+  }
   pushChanges(value: any) {
     this.onChange(value);
   }
 
-  registerOnChange(fn: (_: any) => {}): void { this.onChange = fn; }
-  registerOnTouched(fn: () => {}): void { this.onTouched = fn; }
+  public get value() {
+    return this.controlValue;
+  }
+
+  public set value(v) {
+    this.controlValue = v;
+    this.onChange(this.controlValue);
+    this.onTouched();
+  }
 }

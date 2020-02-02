@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, HostListener } from '@angular/core';
 import { Country } from '../../models/country';
 
 @Component({
@@ -10,10 +10,18 @@ export class CountryListComponent implements OnInit {
 
   @Input() countries: Country[];
   @Output() countrySelected = new EventEmitter();
+  @Output() loadMore = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
   }
+
+  @HostListener('window:scroll', [])
+  onScroll(): void {
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 1) {
+      this.loadMore.emit();
+    }
+}
 
 }

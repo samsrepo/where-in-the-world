@@ -14,7 +14,7 @@
     <app-field label="Languages" [value]="country?.language_names.join(', ')"></app-field>
   </div>
   <div class="border-container">
-    <h4>Border countries:</h4>
-  <button *ngFor="let border of country?.borders_format" class="shape" [routerLink]="['/countries/', border?.code]">{{border?.name}}</button>
+    <h4 *ngIf="country?.borders_format.length > 0">Border countries:</h4>
+    <button *ngFor="let border of country?.borders_format" class="shape" [routerLink]="['/countries/', border?.code]">{{border?.name}}</button>
   </div>
 </div>

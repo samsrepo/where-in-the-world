@@ -1,5 +1,8 @@
+@import 'mixins';
+
 input {
   border: none;
   margin-left: 25px;
   height: 30px;
+  @include element-defaults;
 }

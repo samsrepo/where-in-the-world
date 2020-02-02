@@ -1,0 +1,32 @@
+@import 'variables';
+
+@mixin on-mobile {
+  @media (max-width: #{$mobile-width}) {
+    @content;
+  }
+}
+
+@mixin on-phablet {
+  @media (min-width: #{$mobile-width}) and (max-width: #{$phablet-width}) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: $phablet-width) and (max-width: $tablet-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: #{$tablet-width}) {
+    @content;
+  }
+}
+
+@mixin element-defaults() {
+  border-radius: $border-radius;
+  background-color: var(--el-color);
+  color: var(--text-color);
+  transition: $fade-animation;
+}

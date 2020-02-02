@@ -4,7 +4,8 @@ import { Observable } from 'rxjs';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Country } from '../../models/country';
 import { Router } from '@angular/router';
-import { AppRoutes } from 'src/app/global';
+import { AppRoutes, PageSize } from 'src/app/global';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-country-list-container',
@@ -12,6 +13,8 @@ import { AppRoutes } from 'src/app/global';
   styleUrls: ['./country-list-container.component.scss']
 })
 export class CountryListContainerComponent implements OnInit {
+
+  listSize: number;
 
   filterForm: FormGroup;
 
@@ -24,7 +27,7 @@ export class CountryListContainerComponent implements OnInit {
       country: [''],
       region: ['']
     });
-
+    this.resetListSize();
     this.detectSearchChange();
     this.detectRegionChange();
   }
@@ -36,18 +39,34 @@ export class CountryListContainerComponent implements OnInit {
 
   detectRegionChange() {
     this.filterForm.get('region').valueChanges.subscribe((value) => {
+      this.resetListSize();
       this.countries = this.countryService.findCountry(value, 'region');
+      this.filterForm.patchValue({country: ''}, {emitEvent: false, onlySelf: true});
     });
   }
 
   detectSearchChange() {
-    this.filterForm.get('country').valueChanges.subscribe((value) => {
+    this.filterForm.get('country').valueChanges.pipe(debounceTime(100)).subscribe((value) => {
+      this.resetListSize();
       this.countries = this.countryService.findCountry(value, 'name');
+      this.filterForm.patchValue({region: ''}, {emitEvent: false, onlySelf: true});
     });
+  }
+
+  clearRegion() {
+    this.filterForm.patchValue({region: ''});
   }
 
   loadCountry(code) {
     this.router.navigate([AppRoutes.COUNTRIES + '/', code]);
+  }
+
+  loadMoreCountries() {
+    this.listSize += PageSize;
+  }
+
+  resetListSize() {
+    this.listSize = PageSize;
   }
 
 }
