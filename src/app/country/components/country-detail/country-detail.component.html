@@ -1,5 +1,5 @@
 <div class="container">
-  <img *ngIf="country && country.flag" [src]="country.flag"/>
+<img *ngIf="country && country.flag" alt="Flag for {{country?.name}}" [src]="country.flag"/>
   <h2>{{country?.name}}</h2>
   <div class="left-fields">
     <app-field label="Native Name" [value]="country?.nativeName"></app-field>

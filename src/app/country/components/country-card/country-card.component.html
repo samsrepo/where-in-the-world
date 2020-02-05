@@ -1,6 +1,6 @@
 <div class="shape container">
   <div class="image-container">
-    <img *ngIf="country.flag" [src]="country.flag"/>
+    <img *ngIf="country.flag" [src]="country.flag" alt="Flag for {{country?.name}}"/>
   </div>
   <div class="detail-container">
     <h4>{{country.name}}</h4>
